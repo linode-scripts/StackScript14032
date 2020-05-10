@@ -1,4 +1,7 @@
-# LinuxServerSetupScript
+# Linode Stackscript 14032
 
-## Script for setting up a complete server system
-Debian or compatible distrobution
+## Goals
+Quick install a linux webserver
+
+## Features
+See more at https://github.com/TirsvadCMS-Bashscripts/LinuxServerSetup
