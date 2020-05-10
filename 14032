@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+#<UDF name="scriptversion" Label="Script edition" oneOf="Latest,Development" example="Script version." default="Latest"/>
+#<UDF name="url" default="https://github.com/linode-scripts/Linux-Server-Setup-conf-test/tarball/master" Label="Url link to a your own configuration as a tarball" example="https://github.com/linode-scripts/Linux-Server-Setup-conf-test/tarball/master"/>
+#
+
+set -e # Exit immediately if a command exits with a non-zero status.
+set -u #
+exec &> /root/stackscript.log
+
+[ ${SCRIPTVERSION}=="Latest" ] && curl -L https://github.com/TirsvadCMS-Bashscripts/LinuxServerSetup/tarball/master | tar xz -C /root --strip-components 1
+[ ${SCRIPTVERSION}=="Development" ] && curl -L https://github.com/linode-scripts/PlaygroundNginxRtmp/tarball/master | tar xz -C /root --strip-components 1
+
+export DEBIAN_FRONTEND=noninteractive
+
+[ ${URL:-} ] && {
+    cd /root/LinuxServerSetup/
+    curl -L $URL | tar xz -C /root/LinuxServerSetup --strip-components 1
+}
+
+cd /root/LinuxServerSetup/scripts
+bash setup.sh
