@@ -14,4 +14,4 @@ exec &> /root/stackscript.log
 export DEBIAN_FRONTEND=noninteractive
 
 cd /root/LinuxServerSetup/scripts
-[ ${URL:-} ] && bash setup.sh --url $URL --strip_components 2 || bash setup.sh
+[ ${URL:-} ] && bash setup.sh --url $URL --strip-components 2 || bash setup.sh
